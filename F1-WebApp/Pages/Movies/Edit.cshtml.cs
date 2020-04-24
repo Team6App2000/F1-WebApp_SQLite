@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using F1_WebApp.Models;
+using F1_WebApp.Data;
 
 namespace F1_WebApp.Pages.Movies
 {
