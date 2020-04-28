@@ -14,7 +14,7 @@ namespace F1_WebApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1");
+                .HasAnnotation("ProductVersion", "3.1.3");
 
             modelBuilder.Entity("F1_WebApp.Models.Movie", b =>
                 {
@@ -26,6 +26,9 @@ namespace F1_WebApp.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("Rating")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReleaseDate")
