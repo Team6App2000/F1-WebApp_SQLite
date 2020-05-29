@@ -21,6 +21,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\" />
-    <Folder Include="Views\Drivers\" />
+    <Folder Include="Views\DriversTest\" />
   </ItemGroup>
 </Project>

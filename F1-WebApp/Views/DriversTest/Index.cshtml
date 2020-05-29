@@ -1,5 +1,5 @@
 ﻿@page
-@model IEnumerable<F1_WebApp.Models.Drivers>
+@model IEnumerable<F1_WebApp.Models.DriversTest>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_layout.cshtml";
@@ -10,8 +10,6 @@
 <table class="table">
     <tr>
         <th>DriverID</th>
-        <th>PermanentNumber</th>
-        <th>Code</th>
         <th>URL</th>
         <th>GivenName</th>
         <th>FamilyName</th>
@@ -26,13 +24,7 @@
         @Html.DisplayFor(modelItem => item.DriverID)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.PermanentNumber)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Code)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Url)
+        @Html.DisplayFor(modelItem => item.URL)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.GivenName)

@@ -11,9 +11,9 @@ namespace F1_WebApp
     {
         public IActionResult Index()
         {
-            DriversDataContext context = HttpContext.RequestServices.GetService(typeof(F1_WebApp.Models.DriversDataContext)) as DriversDataContext;
+            DriversTestDataContext context = HttpContext.RequestServices.GetService(typeof(DriversTestDataContext)) as DriversTestDataContext;
 
-            return View(context.GetAllDrivers());
+            return View(context.GetAllDriversTest());
         }
     }
 }

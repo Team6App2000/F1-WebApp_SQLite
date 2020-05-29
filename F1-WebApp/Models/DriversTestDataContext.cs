@@ -4,11 +4,11 @@ using MySql.Data.MySqlClient;
 
 namespace F1_WebApp.Models
 {
-    public class DriversDataContext
+    public class DriversTestDataContext
     {
         public string ConnectionString { get; set; }
 
-        public DriversDataContext(string connectionString)
+        public DriversTestDataContext(string connectionString)
         {
             this.ConnectionString = connectionString;
         }
@@ -18,25 +18,23 @@ namespace F1_WebApp.Models
             return new MySqlConnection(ConnectionString);
         }
 
-        public List<Drivers> GetAllDrivers()
+        public List<DriversTest> GetAllDriversTest()
         {
-            List<Drivers> list = new List<Drivers>();
+            List<DriversTest> list = new List<DriversTest>();
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM Drivers", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM DriversTest", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Drivers()
+                        list.Add(new DriversTest()
                         {
-                            DriverID = reader["driverID"].ToString(),
-                            PermanentNumber = Convert.ToInt32(reader["permanentNumber"]),
-                            Code = reader["code"].ToString(),
-                            Url = reader["url"].ToString(),
+                            DriverID = reader["driverId"].ToString(),
+                            URL = reader["url"].ToString(),
                             GivenName = reader["givenName"].ToString(),
                             FamilyName = reader["familyName"].ToString(),
                             DateOfBirth = reader["dateOfBirth"].ToString(),

@@ -26,8 +26,8 @@ namespace F1_WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-         //   services.AddMvc();
-            services.Add(new ServiceDescriptor(typeof(DriversDataContext), new DriversDataContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.Add(new ServiceDescriptor(typeof(DriversTestDataContext), new DriversTestDataContext(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,13 +55,13 @@ namespace F1_WebApp
             {
                 endpoints.MapRazorPages();
             });
-            /*app.UseMvc(routes =>
+
+            app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Drivers}/{action=Index}/{DriverID?}");
+                    template: "{controller=DriversTest}/{action=Index}");
             });
-            */
         }
     }
 }
