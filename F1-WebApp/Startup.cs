@@ -26,7 +26,7 @@ namespace F1_WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddMvc();
+         //   services.AddMvc();
             services.Add(new ServiceDescriptor(typeof(DriversDataContext), new DriversDataContext(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
@@ -51,17 +51,17 @@ namespace F1_WebApp
 
             app.UseAuthorization();
 
-           /* app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
             });
-           */
-            app.UseMvc(routes =>
+            /*app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Drivers}/{action=Index}/{driverID?}");
+                    template: "{controller=Drivers}/{action=Index}/{DriverID?}");
             });
+            */
         }
     }
 }
