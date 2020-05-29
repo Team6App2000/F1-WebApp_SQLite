@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using F1_WebApp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
 
 namespace F1_WebApp
 {
@@ -24,6 +26,8 @@ namespace F1_WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddMvc();
+            services.Add(new ServiceDescriptor(typeof(DriversDataContext), new DriversDataContext(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,9 +51,16 @@ namespace F1_WebApp
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+           /* app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+            });
+           */
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Drivers}/{action=Index}/{driverID?}");
             });
         }
     }
